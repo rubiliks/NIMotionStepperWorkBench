@@ -23,8 +23,16 @@ class ModbusModel(QObject):
             print("Подключено")
 
         self.readData()
-        self.enableMotor()
-        self.speedMotor()
+
+
+    def writeHolgingRegisterMotor(self,address,resister,value):
+        write_unit = QModbusDataUnit(QModbusDataUnit.HoldingRegisters, resister, 1)
+        write_unit.setValue(0, value)  # Устанавливаем значение 123 в первый (0-й) элемент
+        reply = self.client.sendWriteRequest(write_unit, address)
+
+
+
+
 
     def enableMotor(self):
         write_unit = QModbusDataUnit(QModbusDataUnit.HoldingRegisters, 81, 1)
@@ -65,85 +73,7 @@ class ModbusModel(QObject):
         else:
             print(f"Не удалось отправить запрос: {self.client.errorString()}")
 
-    def startMotorForward(self):
-        write_unit = QModbusDataUnit(QModbusDataUnit.HoldingRegisters, 81, 1)
-        write_unit.setValue(0, 15)  # Устанавливаем значение 123 в первый (0-й) элемент
-
-        # 3. Отправляем запрос на Slave ID 1
-        reply = self.client.sendWriteRequest(write_unit, 1)
-
-        if reply:
-            # Проверка завершения (в реальном GUI приложении лучше через сигналы)
-            if not reply.isFinished():
-                # Если нужно подождать (только для простых скриптов, не для GUI!)
-                # reply.finished.connect(lambda: print("Запись завершена"))
-                print("Запрос отправлен...")
-            else:
-                # Ошибка возникла мгновенно
-                print(f"Ошибка при отправке: {reply.errorString()}")
-                reply.deleteLater()
-        else:
-            print(f"Не удалось отправить запрос: {self.client.errorString()}")
-
-        write_unit = QModbusDataUnit(QModbusDataUnit.HoldingRegisters, 82, 1)
-        write_unit.setValue(0, 0)  # Устанавливаем значение 123 в первый (0-й) элемент
-
-        # 3. Отправляем запрос на Slave ID 1
-        reply = self.client.sendWriteRequest(write_unit, 1)
-
-        if reply:
-            # Проверка завершения (в реальном GUI приложении лучше через сигналы)
-            if not reply.isFinished():
-                # Если нужно подождать (только для простых скриптов, не для GUI!)
-                # reply.finished.connect(lambda: print("Запись завершена"))
-                print("Запрос отправлен...")
-            else:
-                # Ошибка возникла мгновенно
-                print(f"Ошибка при отправке: {reply.errorString()}")
-                reply.deleteLater()
-        else:
-            print(f"Не удалось отправить запрос: {self.client.errorString()}")
-
-    def startMotorBackward(self):
-        write_unit = QModbusDataUnit(QModbusDataUnit.HoldingRegisters, 81, 1)
-        write_unit.setValue(0, 15)  # Устанавливаем значение 123 в первый (0-й) элемент
-
-        # 3. Отправляем запрос на Slave ID 1
-        reply = self.client.sendWriteRequest(write_unit, 1)
-
-        if reply:
-            # Проверка завершения (в реальном GUI приложении лучше через сигналы)
-            if not reply.isFinished():
-                # Если нужно подождать (только для простых скриптов, не для GUI!)
-                # reply.finished.connect(lambda: print("Запись завершена"))
-                print("Запрос отправлен...")
-            else:
-                # Ошибка возникла мгновенно
-                print(f"Ошибка при отправке: {reply.errorString()}")
-                reply.deleteLater()
-        else:
-            print(f"Не удалось отправить запрос: {self.client.errorString()}")
-
-        write_unit = QModbusDataUnit(QModbusDataUnit.HoldingRegisters, 82, 1)
-        write_unit.setValue(0, 1)  # Устанавливаем значение 123 в первый (0-й) элемент
-
-        # 3. Отправляем запрос на Slave ID 1
-        reply = self.client.sendWriteRequest(write_unit, 1)
-
-        if reply:
-            # Проверка завершения (в реальном GUI приложении лучше через сигналы)
-            if not reply.isFinished():
-                # Если нужно подождать (только для простых скриптов, не для GUI!)
-                # reply.finished.connect(lambda: print("Запись завершена"))
-                print("Запрос отправлен...")
-            else:
-                # Ошибка возникла мгновенно
-                print(f"Ошибка при отправке: {reply.errorString()}")
-                reply.deleteLater()
-        else:
-            print(f"Не удалось отправить запрос: {self.client.errorString()}")
-
-    def stopMotor(self):
+    def disableMotor(self):
         write_unit = QModbusDataUnit(QModbusDataUnit.HoldingRegisters, 81, 1)
         write_unit.setValue(0, 6)  # Устанавливаем значение 123 в первый (0-й) элемент
 
@@ -164,8 +94,86 @@ class ModbusModel(QObject):
             print(f"Не удалось отправить запрос: {self.client.errorString()}")
 
     def startMotorForward(self):
+        write_unit = QModbusDataUnit(QModbusDataUnit.HoldingRegisters, 82, 1)
+        write_unit.setValue(0, 0)  # Устанавливаем значение 123 в первый (0-й) элемент
+
+        # 3. Отправляем запрос на Slave ID 1
+        reply = self.client.sendWriteRequest(write_unit, 1)
+
+        if reply:
+            # Проверка завершения (в реальном GUI приложении лучше через сигналы)
+            if not reply.isFinished():
+                # Если нужно подождать (только для простых скриптов, не для GUI!)
+                # reply.finished.connect(lambda: print("Запись завершена"))
+                print("Запрос отправлен...")
+            else:
+                # Ошибка возникла мгновенно
+                print(f"Ошибка при отправке: {reply.errorString()}")
+                reply.deleteLater()
+        else:
+            print(f"Не удалось отправить запрос: {self.client.errorString()}")
+
         write_unit = QModbusDataUnit(QModbusDataUnit.HoldingRegisters, 81, 1)
         write_unit.setValue(0, 15)  # Устанавливаем значение 123 в первый (0-й) элемент
+
+        # 3. Отправляем запрос на Slave ID 1
+        reply = self.client.sendWriteRequest(write_unit, 1)
+
+        if reply:
+            # Проверка завершения (в реальном GUI приложении лучше через сигналы)
+            if not reply.isFinished():
+                # Если нужно подождать (только для простых скриптов, не для GUI!)
+                # reply.finished.connect(lambda: print("Запись завершена"))
+                print("Запрос отправлен...")
+            else:
+                # Ошибка возникла мгновенно
+                print(f"Ошибка при отправке: {reply.errorString()}")
+                reply.deleteLater()
+        else:
+            print(f"Не удалось отправить запрос: {self.client.errorString()}")
+
+    def startMotorBackward(self):
+        write_unit = QModbusDataUnit(QModbusDataUnit.HoldingRegisters, 82, 1)
+        write_unit.setValue(0, 1)  # Устанавливаем значение 123 в первый (0-й) элемент
+
+        # 3. Отправляем запрос на Slave ID 1
+        reply = self.client.sendWriteRequest(write_unit, 1)
+
+        if reply:
+            # Проверка завершения (в реальном GUI приложении лучше через сигналы)
+            if not reply.isFinished():
+                # Если нужно подождать (только для простых скриптов, не для GUI!)
+                # reply.finished.connect(lambda: print("Запись завершена"))
+                print("Запрос отправлен...")
+            else:
+                # Ошибка возникла мгновенно
+                print(f"Ошибка при отправке: {reply.errorString()}")
+                reply.deleteLater()
+        else:
+            print(f"Не удалось отправить запрос: {self.client.errorString()}")
+
+        write_unit = QModbusDataUnit(QModbusDataUnit.HoldingRegisters, 81, 1)
+        write_unit.setValue(0, 15)  # Устанавливаем значение 123 в первый (0-й) элемент
+
+        # 3. Отправляем запрос на Slave ID 1
+        reply = self.client.sendWriteRequest(write_unit, 1)
+
+        if reply:
+            # Проверка завершения (в реальном GUI приложении лучше через сигналы)
+            if not reply.isFinished():
+                # Если нужно подождать (только для простых скриптов, не для GUI!)
+                # reply.finished.connect(lambda: print("Запись завершена"))
+                print("Запрос отправлен...")
+            else:
+                # Ошибка возникла мгновенно
+                print(f"Ошибка при отправке: {reply.errorString()}")
+                reply.deleteLater()
+        else:
+            print(f"Не удалось отправить запрос: {self.client.errorString()}")
+
+    def stopMotor(self):
+        write_unit = QModbusDataUnit(QModbusDataUnit.HoldingRegisters, 81, 1)
+        write_unit.setValue(0, 7)  # Устанавливаем значение 123 в первый (0-й) элемент
 
         # 3. Отправляем запрос на Slave ID 1
         reply = self.client.sendWriteRequest(write_unit, 1)
@@ -212,29 +220,9 @@ class ModbusModel(QObject):
             # Очистка
             reply.deleteLater()
 
-    def speedMotor(self):
+    def speedMotor(self,speedIn):
         write_unit = QModbusDataUnit(QModbusDataUnit.HoldingRegisters, 86, 1)
-        write_unit.setValue(0, 500)  # Устанавливаем значение 123 в первый (0-й) элемент
-
-        # 3. Отправляем запрос на Slave ID 1
-        reply = self.client.sendWriteRequest(write_unit, 1)
-
-        if reply:
-            # Проверка завершения (в реальном GUI приложении лучше через сигналы)
-            if not reply.isFinished():
-                # Если нужно подождать (только для простых скриптов, не для GUI!)
-                # reply.finished.connect(lambda: print("Запись завершена"))
-                print("Запрос отправлен...")
-            else:
-                # Ошибка возникла мгновенно
-                print(f"Ошибка при отправке: {reply.errorString()}")
-                reply.deleteLater()
-        else:
-            print(f"Не удалось отправить запрос: {self.client.errorString()}")
-
-    def disableMotor(self):
-        write_unit = QModbusDataUnit(QModbusDataUnit.HoldingRegisters, 81, 1)
-        write_unit.setValue(0, 6)  # Устанавливаем значение 123 в первый (0-й) элемент
+        write_unit.setValue(0, speedIn)  # Устанавливаем значение 123 в первый (0-й) элемент
 
         # 3. Отправляем запрос на Slave ID 1
         reply = self.client.sendWriteRequest(write_unit, 1)
