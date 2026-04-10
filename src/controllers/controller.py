@@ -4,8 +4,6 @@ from src.models.model import MainModel
 from src.models.modbusModel import ModbusModel
 from src.ui.ui_workbench import Ui_MainWindow
 
-
-
 class MainController(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -20,9 +18,11 @@ class MainController(QMainWindow):
 
         self.ui.MotorEnable_pushButton.clicked.connect(self.modbusModel.enableMotor)
         self.ui.MotorDisable_pushButton.clicked.connect(self.modbusModel.disableMotor)
-        self.ui.MotorSpeed_DoubleSpinBox.setMaximum(500.0)
 
+        self.ui.MotorSpeed_DoubleSpinBox.setMaximum(500.0)
+        self.ui.MotorSpeed_DoubleSpinBox.setValue(100)
         self.modbusModel.speedMotor(100)
+
         self.ui.MotorSpeed_DoubleSpinBox.valueChanged.connect(self.modbusModel.speedMotor)
 
     def handle_click(self):
