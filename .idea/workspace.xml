@@ -1,12 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3f58f3c-dbc3-4699-b7a1-9dae9c60ef2f" name="Changes" comment="" />
+    <list default="true" id="c3f58f3c-dbc3-4699-b7a1-9dae9c60ef2f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/ui/ui_workbench.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/modbusModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/modbusModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/ui_workbench.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/ui_workbench.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "rubiliks"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/rubiliks/NIMotionStepperWorkBench.git",
+    "accountId": "220d0ab5-f91a-46fa-ab80-faf51cf820a9"
+  }
+}]]></component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 6
 }]]></component>
@@ -17,10 +50,32 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "Python.controller.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.modbusModel.executor": "Run",
+    "Python.model.executor": "Run",
+    "Python.ui_workbench.executor": "Run",
+    "Python.workbench.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/096/PycharmProjects/PythonProject/src/ui",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\096\PycharmProjects\PythonProject\src\ui" />
+      <recent name="C:\Users\096\PycharmProjects\PythonProject" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\096\PycharmProjects\PythonProject\src\controllers" />
+      <recent name="C:\Users\096\PycharmProjects\PythonProject\src\models" />
+      <recent name="C:\Users\096\PycharmProjects\PythonProject" />
+      <recent name="C:\Users\096\PycharmProjects\PythonProject\src" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>

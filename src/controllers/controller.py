@@ -15,6 +15,11 @@ class MainController(QMainWindow):
         self.modbusModel = ModbusModel()
 
 
+        self.ui.MotorStart_PushButton.clicked.connect(self.modbusModel.startMotorForward)
+        self.ui.pushButton_3.clicked.connect(self.modbusModel.startMotorBackward)
+        self.ui.MotorStop_PushButton.clicked.connect(self.modbusModel.stopMotor)
+        self.ui.MotorEnable_pushButton.clicked.connect(self.modbusModel.enableMotor)
+        self.ui.MotorDisable_pushButton.clicked.connect(self.modbusModel.disableMotor)
 
     def handle_click(self):
         new_value = self.model.increment()

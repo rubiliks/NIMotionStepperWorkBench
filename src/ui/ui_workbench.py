@@ -16,10 +16,10 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QCheckBox, QDoubleSpinBox, QHBoxLayout,
-    QLabel, QLineEdit, QMainWindow, QMenu,
-    QMenuBar, QPushButton, QRadioButton, QSizePolicy,
-    QSpacerItem, QStatusBar, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QDoubleSpinBox, QHBoxLayout, QLabel,
+    QLineEdit, QMainWindow, QMenu, QMenuBar,
+    QPushButton, QRadioButton, QSizePolicy, QSpacerItem,
+    QStatusBar, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -78,6 +78,26 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2 = QVBoxLayout()
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.horizontalLayout_9 = QHBoxLayout()
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.MotorEnable_pushButton = QPushButton(self.centralwidget)
+        self.MotorEnable_pushButton.setObjectName(u"MotorEnable_pushButton")
+
+        self.horizontalLayout_9.addWidget(self.MotorEnable_pushButton)
+
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout_9)
+
+        self.horizontalLayout_10 = QHBoxLayout()
+        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
+        self.MotorDisable_pushButton = QPushButton(self.centralwidget)
+        self.MotorDisable_pushButton.setObjectName(u"MotorDisable_pushButton")
+
+        self.horizontalLayout_10.addWidget(self.MotorDisable_pushButton)
+
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout_10)
+
         self.horizontalLayout_4 = QHBoxLayout()
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.MotorStart_PushButton = QPushButton(self.centralwidget)
@@ -87,6 +107,16 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_4)
+
+        self.horizontalLayout_11 = QHBoxLayout()
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.pushButton_3 = QPushButton(self.centralwidget)
+        self.pushButton_3.setObjectName(u"pushButton_3")
+
+        self.horizontalLayout_11.addWidget(self.pushButton_3)
+
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout_11)
 
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
@@ -110,11 +140,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_5 = QHBoxLayout()
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.MotorDirection_CheckBox = QCheckBox(self.centralwidget)
-        self.MotorDirection_CheckBox.setObjectName(u"MotorDirection_CheckBox")
-
-        self.horizontalLayout_5.addWidget(self.MotorDirection_CheckBox)
-
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_5)
 
@@ -163,10 +188,12 @@ class Ui_MainWindow(object):
         self.Motor_status_word_label.setText(QCoreApplication.translate("MainWindow", u"Motor status word", None))
         self.Motor_status_word_lineEdit.setText("")
         self.Connection_status_radioButton.setText(QCoreApplication.translate("MainWindow", u"Connection ok", None))
-        self.MotorStart_PushButton.setText(QCoreApplication.translate("MainWindow", u"Start motor", None))
+        self.MotorEnable_pushButton.setText(QCoreApplication.translate("MainWindow", u"Enable Motor", None))
+        self.MotorDisable_pushButton.setText(QCoreApplication.translate("MainWindow", u"Disable Motor", None))
+        self.MotorStart_PushButton.setText(QCoreApplication.translate("MainWindow", u"Start motor forward", None))
+        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Start motor backward", None))
         self.MotorStop_PushButton.setText(QCoreApplication.translate("MainWindow", u"Stop motor", None))
         self.ErrorAcknow_PushButton.setText(QCoreApplication.translate("MainWindow", u"Error acknowledg", None))
-        self.MotorDirection_CheckBox.setText(QCoreApplication.translate("MainWindow", u"Direction ", None))
         self.MotorSpeed_Label.setText(QCoreApplication.translate("MainWindow", u"Speed", None))
         self.menuMain.setTitle(QCoreApplication.translate("MainWindow", u"Main", None))
     # retranslateUi
