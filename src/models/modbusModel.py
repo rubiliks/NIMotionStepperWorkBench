@@ -1,9 +1,14 @@
+import gc
+import time
+
 from PySide6.QtCore import QObject, Slot
 from PySide6.QtSerialBus import (QModbusRtuSerialClient, QModbusDataUnit,
                                  QModbusDevice)
 from PySide6.QtSerialPort import QSerialPort
+from PySide6.QtCore import Signal
 
 class ModbusModel(QObject):
+    dataRecrived = Signal(float)
 
     def __init__(self):
         super().__init__()
@@ -26,9 +31,6 @@ class ModbusModel(QObject):
         self.readImputRegister()
 
 
-
-
-
     def writeHolgingRegisterMotor(self,address,register,value):
         write_unit = QModbusDataUnit(QModbusDataUnit.HoldingRegisters, register, 1)
         write_unit.setValue(0, value)
@@ -44,44 +46,83 @@ class ModbusModel(QObject):
 
 
     def enableMotor(self):
-
         print("enableMotor")
         self.writeHolgingRegisterMotor(1,81,6)
         self.writeHolgingRegisterMotor(1, 81, 7)
-        self.readImputRegister()
+        temp = self.readImputRegister()
+        self.dataRecrived.emit(temp)
 
 
     def disableMotor(self):
         print("disableMotor")
         self.writeHolgingRegisterMotor(1, 81, 6)
-        self.readImputRegister()
-
+        temp = self.readImputRegister()
+        self.dataRecrived.emit(temp)
+        temp = self.readImputRegister()
+        self.dataRecrived.emit(temp)
+        temp = self.readImputRegister()
+        self.dataRecrived.emit(temp)
+        temp = self.readImputRegister()
+        self.dataRecrived.emit(temp)
+        temp = self.readImputRegister()
+        self.dataRecrived.emit(temp)
+        temp = self.readImputRegister()
+        self.dataRecrived.emit(temp)
+        temp = self.readImputRegister()
+        self.dataRecrived.emit(temp)
+        temp = self.readImputRegister()
+        self.dataRecrived.emit(temp)
+        temp = self.readImputRegister()
+        self.dataRecrived.emit(temp)
+        temp = self.readImputRegister()
+        self.dataRecrived.emit(temp)
+        temp = self.readImputRegister()
+        self.dataRecrived.emit(temp)
 
     def startMotorForward(self):
         print("startMotorForward")
         self.writeHolgingRegisterMotor(1, 82, 0)
         self.writeHolgingRegisterMotor(1, 81, 15)
-        self.readImputRegister()
+        temp = self.readImputRegister()
+        self.dataRecrived.emit(temp)
 
 
     def startMotorBackward(self):
         print("startMotorBackward")
         self.writeHolgingRegisterMotor(1, 82, 1)
         self.writeHolgingRegisterMotor(1, 81, 15)
-        self.readImputRegister()
+        temp = self.readImputRegister()
+        self.dataRecrived.emit(temp)
 
 
     def stopMotor(self):
         print("stopMotor")
         self.writeHolgingRegisterMotor(1, 81, 7)
-        self.readImputRegister()
-
+        temp = self.readImputRegister()
+        self.dataRecrived.emit(temp)
+        temp = self.readImputRegister()
+        self.dataRecrived.emit(temp)
+        temp = self.readImputRegister()
+        self.dataRecrived.emit(temp)
+        temp = self.readImputRegister()
+        self.dataRecrived.emit(temp)
+        temp = self.readImputRegister()
+        self.dataRecrived.emit(temp)
+        temp = self.readImputRegister()
+        self.dataRecrived.emit(temp)
+        temp = self.readImputRegister()
+        self.dataRecrived.emit(temp)
+        temp = self.readImputRegister()
+        self.dataRecrived.emit(temp)
+        temp = self.readImputRegister()
+        self.dataRecrived.emit(temp)
 
 
     def speedMotor(self,speedIn):
         print("speedMotor")
         self.writeHolgingRegisterMotor(1, 86, speedIn)
-        self.readImputRegister()
+        temp = self.readImputRegister()
+        self.dataRecrived.emit(temp)
 
 
     def readImputRegister (self):
@@ -98,6 +139,7 @@ class ModbusModel(QObject):
                 print(f"Регистр {result.startAddress()}: {value}")
             else:
                 print(f"Ошибка чтения: {reply.errorString()}")
+        return value
 
 
     def readData (self):
@@ -107,12 +149,9 @@ class ModbusModel(QObject):
 
         if reply:
             while not reply.isFinished():
-                # В цикле событий Qt это происходит автоматически,
-                # здесь мы просто ждем завершения операции
                 from PySide6.QtCore import QCoreApplication
                 QCoreApplication.processEvents()
 
-            # 4. Проверяем на ошибки и выводим результат
             if reply.error() == QModbusDevice.NoError:
                 result = reply.result()
                 value = result.value(0)  # Читаем первое (и единственное) значение
@@ -128,4 +167,6 @@ class ModbusModel(QObject):
                 print(f"Ошибка чтения: {reply.errorString()}")
             # Очистка
             reply.deleteLater()
+
+
 

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3f58f3c-dbc3-4699-b7a1-9dae9c60ef2f" name="Changes" comment="tru func to modbus">
+    <list default="true" id="c3f58f3c-dbc3-4699-b7a1-9dae9c60ef2f" name="Changes" comment="add read status">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/controller.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/modbusModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/modbusModel.py" afterDir="false" />
@@ -24,21 +24,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "rubiliks"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;rubiliks&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/rubiliks/NIMotionStepperWorkBench.git",
-    "accountId": "220d0ab5-f91a-46fa-ab80-faf51cf820a9"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/rubiliks/NIMotionStepperWorkBench.git&quot;,
+    &quot;accountId&quot;: &quot;220d0ab5-f91a-46fa-ab80-faf51cf820a9&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="3C6rjk1113i5w65mZJZwJe3QeOQ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -55,6 +55,7 @@
     "Python.ui_workbench.executor": "Run",
     "Python.workbench.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/Users/096/PycharmProjects/PythonProject/src/ui",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
@@ -103,12 +104,21 @@
       <option name="project" value="LOCAL" />
       <updated>1775826790694</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add read status">
+      <option name="closed" value="true" />
+      <created>1775833110722</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1775833110722</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add buttom start stop enable disable" />
     <MESSAGE value="tru func to modbus" />
-    <option name="LAST_COMMIT_MESSAGE" value="tru func to modbus" />
+    <MESSAGE value="add read status" />
+    <option name="LAST_COMMIT_MESSAGE" value="add read status" />
   </component>
 </project>

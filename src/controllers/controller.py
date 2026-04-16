@@ -12,19 +12,23 @@ class MainController(QMainWindow):
         self.model = MainModel()
         self.modbusModel = ModbusModel()
 
+        #Button connection
         self.ui.MotorStart_PushButton.clicked.connect(self.modbusModel.startMotorForward)
         self.ui.pushButton_3.clicked.connect(self.modbusModel.startMotorBackward)
         self.ui.MotorStop_PushButton.clicked.connect(self.modbusModel.stopMotor)
-
         self.ui.MotorEnable_pushButton.clicked.connect(self.modbusModel.enableMotor)
         self.ui.MotorDisable_pushButton.clicked.connect(self.modbusModel.disableMotor)
 
+        # Speed connection / setting
         self.ui.MotorSpeed_DoubleSpinBox.setMaximum(500.0)
         self.ui.MotorSpeed_DoubleSpinBox.setValue(100)
+        self.ui.MotorSpeed_DoubleSpinBox.valueChanged.connect(self.modbusModel.speedMotor)
         self.modbusModel.speedMotor(100)
 
-        self.ui.MotorSpeed_DoubleSpinBox.valueChanged.connect(self.modbusModel.speedMotor)
+        #Status motor connection
+        self.modbusModel.dataRecrived.connect(self.updateMotorStatusLabel)
+        self.ui.Motor_status_word_lineEdit.setEnabled(False)
 
-    def handle_click(self):
-        new_value = self.model.increment()
-        print(new_value)
+
+    def updateMotorStatusLabel(self, value):
+        self.ui.Motor_status_word_lineEdit.setText(str(value))
