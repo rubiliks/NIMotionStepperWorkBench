@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3f58f3c-dbc3-4699-b7a1-9dae9c60ef2f" name="Changes" comment="add read status">
+    <list default="true" id="c3f58f3c-dbc3-4699-b7a1-9dae9c60ef2f" name="Changes" comment="minore change">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/controller.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/modbusModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/modbusModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/ui_workbench.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/ui_workbench.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,13 +113,22 @@
       <option name="project" value="LOCAL" />
       <updated>1775833110722</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="minore change">
+      <option name="closed" value="true" />
+      <created>1776343551114</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1776343551114</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add buttom start stop enable disable" />
     <MESSAGE value="tru func to modbus" />
     <MESSAGE value="add read status" />
-    <option name="LAST_COMMIT_MESSAGE" value="add read status" />
+    <MESSAGE value="minore change" />
+    <option name="LAST_COMMIT_MESSAGE" value="minore change" />
   </component>
 </project>

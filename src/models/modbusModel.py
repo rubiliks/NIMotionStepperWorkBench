@@ -1,7 +1,7 @@
 import gc
 import time
 
-from PySide6.QtCore import QObject, Slot
+from PySide6.QtCore import QObject, Slot, Signal
 from PySide6.QtSerialBus import (QModbusRtuSerialClient, QModbusDataUnit,
                                  QModbusDevice)
 from PySide6.QtSerialPort import QSerialPort
@@ -9,32 +9,40 @@ from PySide6.QtCore import Signal
 
 class ModbusModel(QObject):
     dataRecrived = Signal(float)
+    dataConnectionStatus =  Signal(bool)
 
     def __init__(self):
         super().__init__()
-        self._counter = 0
-        self.client = QModbusRtuSerialClient(self)
-        self.client.setConnectionParameter(QModbusDevice.SerialPortNameParameter, "COM3")
-        self.client.setConnectionParameter(QModbusDevice.SerialParityParameter, QSerialPort.NoParity)
-        self.client.setConnectionParameter(QModbusDevice.SerialBaudRateParameter, QSerialPort.BaudRate.Baud115200)
-        self.client.setConnectionParameter(QModbusDevice.SerialDataBitsParameter, QSerialPort.Data8)
-        self.client.setConnectionParameter(QModbusDevice.SerialStopBitsParameter, QSerialPort.OneStop)
-        self.client.setTimeout(1000)
-        self.client.setNumberOfRetries(3)
 
-        if not self.client.connectDevice():
-            print(f"Ошибка подключения: {self.client.errorString()}")
+        self._modbus_device = None
+        self._modbus_device = QModbusRtuSerialClient(self)
+
+
+    def connectModbus (self):
+        if self._modbus_device.state() != QModbusDevice.State.ConnectedState:
+            self._modbus_device.setConnectionParameter(QModbusDevice.SerialPortNameParameter, "COM3")
+            self._modbus_device.setConnectionParameter(QModbusDevice.SerialParityParameter, QSerialPort.NoParity)
+            self._modbus_device.setConnectionParameter(QModbusDevice.SerialBaudRateParameter, QSerialPort.BaudRate.Baud115200)
+            self._modbus_device.setConnectionParameter(QModbusDevice.SerialDataBitsParameter, QSerialPort.Data8)
+            self._modbus_device.setConnectionParameter(QModbusDevice.SerialStopBitsParameter, QSerialPort.OneStop)
+            self._modbus_device.setTimeout(1000)
+            self._modbus_device.setNumberOfRetries(3)
+            if not self._modbus_device.connectDevice():
+                print(f"Ошибка подключения: {self._modbus_device.errorString()}")
+                self.dataConnectionStatus.emit(False)
+            else:
+                print("Подключено")
+                self.dataConnectionStatus.emit(True)
         else:
-            print("Подключено")
-
-        self.readData()
-        self.readImputRegister()
+            self._modbus_device.disconnectDevice()
+            print("Соединение разорвано")
+            self.dataConnectionStatus.emit(False)
 
 
     def writeHolgingRegisterMotor(self,address,register,value):
         write_unit = QModbusDataUnit(QModbusDataUnit.HoldingRegisters, register, 1)
         write_unit.setValue(0, value)
-        reply = self.client.sendWriteRequest(write_unit, address)
+        reply = self._modbus_device.sendWriteRequest(write_unit, address)
         if reply:
             if not reply.isFinished():
                 print("Запрос отправлен...")
@@ -42,7 +50,7 @@ class ModbusModel(QObject):
                 print(f"Ошибка при отправке: {reply.errorString()}")
                 reply.deleteLater()
         else:
-            print(f"Не удалось отправить запрос: {self.client.errorString()}")
+            print(f"Не удалось отправить запрос: {self._modbus_device.errorString()}")
 
 
     def enableMotor(self):
@@ -127,8 +135,9 @@ class ModbusModel(QObject):
 
     def readImputRegister (self):
         slave_id = 1
+        value = 1
         request = QModbusDataUnit(QModbusDataUnit.InputRegisters, 31, 1)
-        reply = self.client.sendReadRequest(request, 1)
+        reply = self._modbus_device.sendReadRequest(request, 1)
         if reply:
             while not reply.isFinished():
                 from PySide6.QtCore import QCoreApplication
@@ -145,7 +154,7 @@ class ModbusModel(QObject):
     def readData (self):
         slave_id = 1
         request = QModbusDataUnit(QModbusDataUnit.HoldingRegisters, 85, 10)
-        reply = self.client.sendReadRequest(request, slave_id)
+        reply = self._modbus_device.sendReadRequest(request, slave_id)
 
         if reply:
             while not reply.isFinished():

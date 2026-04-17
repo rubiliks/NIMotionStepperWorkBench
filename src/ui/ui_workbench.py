@@ -18,8 +18,8 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QTransform)
 from PySide6.QtWidgets import (QApplication, QDoubleSpinBox, QHBoxLayout, QLabel,
     QLineEdit, QMainWindow, QMenu, QMenuBar,
-    QPushButton, QRadioButton, QSizePolicy, QSpacerItem,
-    QStatusBar, QVBoxLayout, QWidget)
+    QPushButton, QSizePolicy, QSpacerItem, QStatusBar,
+    QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -40,31 +40,37 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.horizontalLayout_6 = QHBoxLayout()
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.Motor_status_word_label = QLabel(self.centralwidget)
-        self.Motor_status_word_label.setObjectName(u"Motor_status_word_label")
+        self.Modbus_connection_label = QLabel(self.centralwidget)
+        self.Modbus_connection_label.setObjectName(u"Modbus_connection_label")
 
-        self.horizontalLayout_6.addWidget(self.Motor_status_word_label)
-
-        self.Motor_status_word_lineEdit = QLineEdit(self.centralwidget)
-        self.Motor_status_word_lineEdit.setObjectName(u"Motor_status_word_lineEdit")
-        self.Motor_status_word_lineEdit.setEnabled(True)
-        sizePolicy = QSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.Motor_status_word_lineEdit.sizePolicy().hasHeightForWidth())
-        self.Motor_status_word_lineEdit.setSizePolicy(sizePolicy)
-
-        self.horizontalLayout_6.addWidget(self.Motor_status_word_lineEdit)
+        self.horizontalLayout_6.addWidget(self.Modbus_connection_label)
 
 
         self.verticalLayout_3.addLayout(self.horizontalLayout_6)
 
+        self.horizontalLayout_12 = QHBoxLayout()
+        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
+        self.Modbus_status_word_lineEdit = QLineEdit(self.centralwidget)
+        self.Modbus_status_word_lineEdit.setObjectName(u"Modbus_status_word_lineEdit")
+        self.Modbus_status_word_lineEdit.setEnabled(False)
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.Modbus_status_word_lineEdit.sizePolicy().hasHeightForWidth())
+        self.Modbus_status_word_lineEdit.setSizePolicy(sizePolicy)
+        self.Modbus_status_word_lineEdit.setMaximumSize(QSize(16777213, 16777215))
+
+        self.horizontalLayout_12.addWidget(self.Modbus_status_word_lineEdit)
+
+
+        self.verticalLayout_3.addLayout(self.horizontalLayout_12)
+
         self.horizontalLayout_8 = QHBoxLayout()
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
-        self.Connection_status_radioButton = QRadioButton(self.centralwidget)
-        self.Connection_status_radioButton.setObjectName(u"Connection_status_radioButton")
+        self.Modbus_con_discon_pushButton = QPushButton(self.centralwidget)
+        self.Modbus_con_discon_pushButton.setObjectName(u"Modbus_con_discon_pushButton")
 
-        self.horizontalLayout_8.addWidget(self.Connection_status_radioButton)
+        self.horizontalLayout_8.addWidget(self.Modbus_con_discon_pushButton)
 
 
         self.verticalLayout_3.addLayout(self.horizontalLayout_8)
@@ -78,6 +84,20 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2 = QVBoxLayout()
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.Motor_status_word_label_2 = QLabel(self.centralwidget)
+        self.Motor_status_word_label_2.setObjectName(u"Motor_status_word_label_2")
+        self.Motor_status_word_label_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.verticalLayout_2.addWidget(self.Motor_status_word_label_2)
+
+        self.Motor_status_word_lineEdit = QLineEdit(self.centralwidget)
+        self.Motor_status_word_lineEdit.setObjectName(u"Motor_status_word_lineEdit")
+        self.Motor_status_word_lineEdit.setEnabled(False)
+        sizePolicy.setHeightForWidth(self.Motor_status_word_lineEdit.sizePolicy().hasHeightForWidth())
+        self.Motor_status_word_lineEdit.setSizePolicy(sizePolicy)
+
+        self.verticalLayout_2.addWidget(self.Motor_status_word_lineEdit)
+
         self.horizontalLayout_9 = QHBoxLayout()
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
         self.MotorEnable_pushButton = QPushButton(self.centralwidget)
@@ -100,20 +120,20 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_4 = QHBoxLayout()
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.MotorStart_PushButton = QPushButton(self.centralwidget)
-        self.MotorStart_PushButton.setObjectName(u"MotorStart_PushButton")
+        self.MotorStartForward_PushButton = QPushButton(self.centralwidget)
+        self.MotorStartForward_PushButton.setObjectName(u"MotorStartForward_PushButton")
 
-        self.horizontalLayout_4.addWidget(self.MotorStart_PushButton)
+        self.horizontalLayout_4.addWidget(self.MotorStartForward_PushButton)
 
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_4)
 
         self.horizontalLayout_11 = QHBoxLayout()
         self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
-        self.pushButton_3 = QPushButton(self.centralwidget)
-        self.pushButton_3.setObjectName(u"pushButton_3")
+        self.MotorStartBackward_PushButton = QPushButton(self.centralwidget)
+        self.MotorStartBackward_PushButton.setObjectName(u"MotorStartBackward_PushButton")
 
-        self.horizontalLayout_11.addWidget(self.pushButton_3)
+        self.horizontalLayout_11.addWidget(self.MotorStartBackward_PushButton)
 
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_11)
@@ -185,13 +205,14 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.Motor_status_word_label.setText(QCoreApplication.translate("MainWindow", u"Motor status word", None))
+        self.Modbus_connection_label.setText(QCoreApplication.translate("MainWindow", u"Modbus connection", None))
+        self.Modbus_con_discon_pushButton.setText(QCoreApplication.translate("MainWindow", u"Connect/disconect", None))
+        self.Motor_status_word_label_2.setText(QCoreApplication.translate("MainWindow", u"Motor control", None))
         self.Motor_status_word_lineEdit.setText("")
-        self.Connection_status_radioButton.setText(QCoreApplication.translate("MainWindow", u"Connection ok", None))
         self.MotorEnable_pushButton.setText(QCoreApplication.translate("MainWindow", u"Enable Motor", None))
         self.MotorDisable_pushButton.setText(QCoreApplication.translate("MainWindow", u"Disable Motor", None))
-        self.MotorStart_PushButton.setText(QCoreApplication.translate("MainWindow", u"Start motor forward", None))
-        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Start motor backward", None))
+        self.MotorStartForward_PushButton.setText(QCoreApplication.translate("MainWindow", u"Start motor forward", None))
+        self.MotorStartBackward_PushButton.setText(QCoreApplication.translate("MainWindow", u"Start motor backward", None))
         self.MotorStop_PushButton.setText(QCoreApplication.translate("MainWindow", u"Stop motor", None))
         self.ErrorAcknow_PushButton.setText(QCoreApplication.translate("MainWindow", u"Error acknowledg", None))
         self.MotorSpeed_Label.setText(QCoreApplication.translate("MainWindow", u"Speed", None))
