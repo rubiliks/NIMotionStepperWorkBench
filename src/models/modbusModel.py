@@ -18,7 +18,6 @@ class ModbusModel(QObject):
         self.timer = QTimer()
         self.timer.timeout.connect(self.readImputRegister)
 
-
     # Соединение модбас
     def connectModbus (self):
         if self._modbus_device.state() != QModbusDevice.State.ConnectedState:
