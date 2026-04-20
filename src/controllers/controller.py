@@ -4,6 +4,7 @@ from src.models.model import MainModel
 from src.models.modbusModel import ModbusModel
 from src.ui.ui_workbench import Ui_MainWindow
 
+
 class MainController(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -16,7 +17,6 @@ class MainController(QMainWindow):
         self.ui.Modbus_con_discon_pushButton.clicked.connect(self.modbusModel.connectModbus)
 
         #Button motor
-
         self.ui.MotorStartForward_PushButton.clicked.connect(self.modbusModel.startMotorForward)
         self.ui.MotorStartBackward_PushButton.clicked.connect(self.modbusModel.startMotorBackward)
 
