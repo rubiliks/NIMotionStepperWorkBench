@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(800, 524)
+        MainWindow.resize(1052, 836)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setMinimumSize(QSize(800, 0))
@@ -35,6 +35,56 @@ class Ui_MainWindow(object):
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
+
+        self.verticalLayout = QVBoxLayout()
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.horizontalLayout_5 = QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.label_4 = QLabel(self.centralwidget)
+        self.label_4.setObjectName(u"label_4")
+
+        self.horizontalLayout_5.addWidget(self.label_4)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_5)
+
+        self.horizontalLayout_14 = QHBoxLayout()
+        self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
+        self.gate_sensor_1_label = QLabel(self.centralwidget)
+        self.gate_sensor_1_label.setObjectName(u"gate_sensor_1_label")
+
+        self.horizontalLayout_14.addWidget(self.gate_sensor_1_label)
+
+        self.gate_sensor_1_indicator = QLabel(self.centralwidget)
+        self.gate_sensor_1_indicator.setObjectName(u"gate_sensor_1_indicator")
+
+        self.horizontalLayout_14.addWidget(self.gate_sensor_1_indicator)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_14)
+
+        self.horizontalLayout_15 = QHBoxLayout()
+        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
+        self.gate_sensor_2_label = QLabel(self.centralwidget)
+        self.gate_sensor_2_label.setObjectName(u"gate_sensor_2_label")
+
+        self.horizontalLayout_15.addWidget(self.gate_sensor_2_label)
+
+        self.gate_sensor_2_indicator = QLabel(self.centralwidget)
+        self.gate_sensor_2_indicator.setObjectName(u"gate_sensor_2_indicator")
+        self.gate_sensor_2_indicator.setAutoFillBackground(False)
+
+        self.horizontalLayout_15.addWidget(self.gate_sensor_2_indicator)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_15)
+
+        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout.addItem(self.verticalSpacer_3)
+
+
+        self.horizontalLayout.addLayout(self.verticalLayout)
 
         self.verticalLayout_3 = QVBoxLayout()
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
@@ -158,11 +208,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_7)
 
-        self.horizontalLayout_5 = QHBoxLayout()
-        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-
-        self.verticalLayout_2.addLayout(self.horizontalLayout_5)
-
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.MotorSpeed_Label = QLabel(self.centralwidget)
@@ -188,7 +233,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 800, 22))
+        self.menubar.setGeometry(QRect(0, 0, 1052, 22))
         self.menuMain = QMenu(self.menubar)
         self.menuMain.setObjectName(u"menuMain")
         MainWindow.setMenuBar(self.menubar)
@@ -205,6 +250,11 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Work bench", None))
+        self.gate_sensor_1_label.setText(QCoreApplication.translate("MainWindow", u"Gate sensor 1", None))
+        self.gate_sensor_1_indicator.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.gate_sensor_2_label.setText(QCoreApplication.translate("MainWindow", u"Gate sensor 2", None))
+        self.gate_sensor_2_indicator.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.Modbus_connection_label.setText(QCoreApplication.translate("MainWindow", u"Modbus connection", None))
         self.Modbus_con_discon_pushButton.setText(QCoreApplication.translate("MainWindow", u"Connect/disconect", None))
         self.Motor_status_word_label_2.setText(QCoreApplication.translate("MainWindow", u"Motor control", None))

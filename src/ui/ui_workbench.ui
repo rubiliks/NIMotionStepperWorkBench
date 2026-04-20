@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>524</height>
+    <width>1052</width>
+    <height>836</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -38,20 +38,91 @@
      </spacer>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_3">
+     <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
         <item>
-         <widget class="QLabel" name="Motor_status_word_label">
+         <widget class="QLabel" name="label_4">
           <property name="text">
-           <string>Motor status word</string>
+           <string>Work bench</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_14">
+        <item>
+         <widget class="QLabel" name="gate_sensor_1_label">
+          <property name="text">
+           <string>Gate sensor 1</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="Motor_status_word_lineEdit">
+         <widget class="QLabel" name="gate_sensor_1_indicator">
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_15">
+        <item>
+         <widget class="QLabel" name="gate_sensor_2_label">
+          <property name="text">
+           <string>Gate sensor 2</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="gate_sensor_2_indicator">
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="verticalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Orientation::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item>
+         <widget class="QLabel" name="Modbus_connection_label">
+          <property name="text">
+           <string>Modbus connection</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_12">
+        <item>
+         <widget class="QLineEdit" name="Modbus_status_word_lineEdit">
           <property name="enabled">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
@@ -59,8 +130,11 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
-          <property name="text">
-           <string/>
+          <property name="maximumSize">
+           <size>
+            <width>16777213</width>
+            <height>16777215</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -69,9 +143,9 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_8">
         <item>
-         <widget class="QRadioButton" name="Connection_status_radioButton">
+         <widget class="QPushButton" name="Modbus_con_discon_pushButton">
           <property name="text">
-           <string>Connection ok</string>
+           <string>Connect/disconect</string>
           </property>
          </widget>
         </item>
@@ -94,6 +168,32 @@
     </item>
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QLabel" name="Motor_status_word_label_2">
+        <property name="text">
+         <string>Motor control</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="Motor_status_word_lineEdit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_9">
         <item>
@@ -119,7 +219,7 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
-         <widget class="QPushButton" name="MotorStart_PushButton">
+         <widget class="QPushButton" name="MotorStartForward_PushButton">
           <property name="text">
            <string>Start motor forward</string>
           </property>
@@ -130,7 +230,7 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_11">
         <item>
-         <widget class="QPushButton" name="pushButton_3">
+         <widget class="QPushButton" name="MotorStartBackward_PushButton">
           <property name="text">
            <string>Start motor backward</string>
           </property>
@@ -159,9 +259,6 @@
          </widget>
         </item>
        </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_5"/>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -199,7 +296,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1052</width>
      <height>22</height>
     </rect>
    </property>

@@ -10,13 +10,18 @@ from PySide6.QtCore import QTimer
 class ModbusModel(QObject):
     dataRecrived = Signal(float)
     dataConnectionStatus =  Signal(bool)
+    dataGate1Status = Signal(bool)
+    dataGate2Status = Signal(bool)
 
     def __init__(self):
         super().__init__()
         self._modbus_device = None
         self._modbus_device = QModbusRtuSerialClient(self)
         self.timer = QTimer()
-        self.timer.timeout.connect(self.readImputRegister)
+        self.timer.timeout.connect(lambda:self.readImputRegister(1,31))
+
+        self.timer2 = QTimer()
+        self.timer2.timeout.connect(lambda:self.readImputRegister(1,24))
 
     # Соединение модбас
     def connectModbus (self):
@@ -32,15 +37,19 @@ class ModbusModel(QObject):
                 print(f"Ошибка подключения: {self._modbus_device.errorString()}")
                 self.dataConnectionStatus.emit(False)
                 self.timer.stop()
+                self.timer2.stop()
             else:
                 print("Подключено")
                 self.dataConnectionStatus.emit(True)
                 self.timer.start(200)
+                self.timer2.start(200)
+
         else:
             self._modbus_device.disconnectDevice()
             print("Соединение разорвано")
             self.dataConnectionStatus.emit(False)
             self.timer.stop()
+            self.timer2.stop()
 
     # Запись регистров
     def writeHolgingRegisterMotor(self, address, register, value):
@@ -68,14 +77,12 @@ class ModbusModel(QObject):
         reply.deleteLater()
 
     # Чтение регистров
-    def readImputRegister (self):
-        slave_id = 1
-        value = 1
-        request = QModbusDataUnit(QModbusDataUnit.InputRegisters, 31, 1)
-        reply = self._modbus_device.sendReadRequest(request, 1)
+    def readImputRegister (self, address, register):
+        request = QModbusDataUnit(QModbusDataUnit.InputRegisters, register, 1)
+        reply = self._modbus_device.sendReadRequest(request, address)
         if reply:
             reply.finished.connect(self._read_finished)
-            print(f"Запрос на чтение отправлен (адрес=1, регистр=31")
+            print(f"Запрос на чтение отправлен")
         else:
             print(f"Не удалось отправить запрос на чтение: {self._modbus_device.errorString()}")
 
@@ -90,7 +97,11 @@ class ModbusModel(QObject):
                 value = result.value(0)
                 register = result.startAddress()
                 print(f"Регистр {register}: {value}")
-                self.dataRecrived.emit(value)
+                if register == 24:
+                    self.print_bits_lsb(value)
+                if register == 31:
+                    self.dataRecrived.emit(value)
+
             else:
                 print("Нет данных в ответе")
         elif error == QModbusDevice.ProtocolError:
@@ -99,6 +110,7 @@ class ModbusModel(QObject):
         else:
             print(f"Ошибка при чтении: {reply.errorString()} (код: {error})")
         reply.deleteLater()
+
 
     # Управление двигателем
 
@@ -128,5 +140,16 @@ class ModbusModel(QObject):
     def speedMotor(self,speedIn):
         print("speedMotor")
         self.writeHolgingRegisterMotor(1, 86, speedIn)
+
+    def print_bits_lsb(self,value, bits=2):
+        print(f"Число: {value}")
+        for i in range(bits):
+            bit = (value >> i) & 1
+            print(f"Бит {i:2d}: {bit}")
+            if i == 0:
+                self.dataGate1Status.emit(bit)
+            if i == 1:
+                self.dataGate2Status.emit(bit)
+
 
 

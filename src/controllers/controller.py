@@ -37,9 +37,29 @@ class MainController(QMainWindow):
         #Status connection
         self.modbusModel.dataConnectionStatus.connect(self.updateconnectStatusLabel)
 
+        # Gate indicator
+        self.ui.gate_sensor_1_indicator.setStyleSheet(""" background-color: red; border: 1px solid black;""")
+        self.ui.gate_sensor_2_indicator.setStyleSheet(""" background-color: red; border: 1px solid black;""")
+        self.ui.gate_sensor_1_indicator.setText("               ")
+        self.ui.gate_sensor_2_indicator.setText("               ")
+
+        self.modbusModel.dataGate1Status.connect(self.updateGate1StatusLabel)
+        self.modbusModel.dataGate2Status.connect(self.updateGate2StatusLabel)
 
     def updateMotorStatusLabel(self, value):
         self.ui.Motor_status_word_lineEdit.setText(str(value))
 
     def updateconnectStatusLabel(self, value):
         self.ui.Modbus_status_word_lineEdit.setText(str(value))
+
+    def updateGate1StatusLabel(self, value):
+        if value == 0:
+            self.ui.gate_sensor_1_indicator.setStyleSheet(""" background-color: red; border: 1px solid black;""")
+        if value == 1:
+            self.ui.gate_sensor_1_indicator.setStyleSheet(""" background-color: green; border: 1px solid black;""")
+
+    def updateGate2StatusLabel(self, value):
+        if value == 0:
+            self.ui.gate_sensor_2_indicator.setStyleSheet(""" background-color: red; border: 1px solid black;""")
+        if value == 1:
+            self.ui.gate_sensor_2_indicator.setStyleSheet(""" background-color: green; border: 1px solid black;""")
