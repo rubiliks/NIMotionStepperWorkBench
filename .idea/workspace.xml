@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3f58f3c-dbc3-4699-b7a1-9dae9c60ef2f" name="Changes" comment="add status gate sensor, read DI">
+    <list default="true" id="c3f58f3c-dbc3-4699-b7a1-9dae9c60ef2f" name="Changes" comment="refactor">
+      <change beforePath="$PROJECT_DIR$/.idea/PythonProject.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logger.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/modbusModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/modbusModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/ui_workbench.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/ui_workbench.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/ui_workbench.ui" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/ui_workbench.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src - Shortcut.lnk" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +72,7 @@
       <recent name="C:\Users\096\PycharmProjects\PythonProject" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\096\PycharmProjects\PythonProject\doc" />
       <recent name="C:\Users\096\PycharmProjects\PythonProject\src\controllers" />
       <recent name="C:\Users\096\PycharmProjects\PythonProject\src\models" />
       <recent name="C:\Users\096\PycharmProjects\PythonProject" />
@@ -164,7 +166,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776694454896</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="refactor">
+      <option name="closed" value="true" />
+      <created>1776859414186</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1776859414186</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -187,6 +197,7 @@
     <MESSAGE value="add  reply.finished.connect" />
     <MESSAGE value="updade read/write modbus" />
     <MESSAGE value="add status gate sensor, read DI" />
-    <option name="LAST_COMMIT_MESSAGE" value="add status gate sensor, read DI" />
+    <MESSAGE value="refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
   </component>
 </project>
