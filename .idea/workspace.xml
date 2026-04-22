@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3f58f3c-dbc3-4699-b7a1-9dae9c60ef2f" name="Changes" comment="updade read/write modbus">
+    <list default="true" id="c3f58f3c-dbc3-4699-b7a1-9dae9c60ef2f" name="Changes" comment="add status gate sensor, read DI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logger.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/modbusModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/modbusModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/ui_workbench.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/ui_workbench.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/ui_workbench.ui" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/ui_workbench.ui" afterDir="false" />
     </list>
@@ -154,8 +156,27 @@
       <option name="project" value="LOCAL" />
       <updated>1776678986163</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add status gate sensor, read DI">
+      <option name="closed" value="true" />
+      <created>1776694454896</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1776694454896</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add buttom start stop enable disable" />
@@ -165,6 +186,7 @@
     <MESSAGE value="add connect/disconnect func" />
     <MESSAGE value="add  reply.finished.connect" />
     <MESSAGE value="updade read/write modbus" />
-    <option name="LAST_COMMIT_MESSAGE" value="updade read/write modbus" />
+    <MESSAGE value="add status gate sensor, read DI" />
+    <option name="LAST_COMMIT_MESSAGE" value="add status gate sensor, read DI" />
   </component>
 </project>

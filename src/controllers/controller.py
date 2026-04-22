@@ -1,16 +1,14 @@
 from PySide6.QtWidgets import QMainWindow
-from PySide6.QtUiTools import QUiLoader
-from src.models.model import MainModel
 from src.models.modbusModel import ModbusModel
 from src.ui.ui_workbench import Ui_MainWindow
-
 
 class MainController(QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.model = MainModel()
+
+        self.setWindowTitle("Workbench")
         self.modbusModel = ModbusModel()
 
         #Button connection
@@ -38,13 +36,14 @@ class MainController(QMainWindow):
         self.modbusModel.dataConnectionStatus.connect(self.updateconnectStatusLabel)
 
         # Gate indicator
-        self.ui.gate_sensor_1_indicator.setStyleSheet(""" background-color: red; border: 1px solid black;""")
-        self.ui.gate_sensor_2_indicator.setStyleSheet(""" background-color: red; border: 1px solid black;""")
+        self.ui.gate_sensor_1_indicator.setStyleSheet(""" background-color: grey; border: 1px solid black;""")
+        self.ui.gate_sensor_2_indicator.setStyleSheet(""" background-color: grey; border: 1px solid black;""")
         self.ui.gate_sensor_1_indicator.setText("               ")
         self.ui.gate_sensor_2_indicator.setText("               ")
 
         self.modbusModel.dataGate1Status.connect(self.updateGate1StatusLabel)
         self.modbusModel.dataGate2Status.connect(self.updateGate2StatusLabel)
+
 
     def updateMotorStatusLabel(self, value):
         self.ui.Motor_status_word_lineEdit.setText(str(value))
@@ -52,14 +51,16 @@ class MainController(QMainWindow):
     def updateconnectStatusLabel(self, value):
         self.ui.Modbus_status_word_lineEdit.setText(str(value))
 
+
+    #color of gate sensor
     def updateGate1StatusLabel(self, value):
         if value == 0:
-            self.ui.gate_sensor_1_indicator.setStyleSheet(""" background-color: red; border: 1px solid black;""")
+            self.ui.gate_sensor_1_indicator.setStyleSheet(""" background-color: grey; border: 1px solid black;""")
         if value == 1:
             self.ui.gate_sensor_1_indicator.setStyleSheet(""" background-color: green; border: 1px solid black;""")
 
     def updateGate2StatusLabel(self, value):
         if value == 0:
-            self.ui.gate_sensor_2_indicator.setStyleSheet(""" background-color: red; border: 1px solid black;""")
+            self.ui.gate_sensor_2_indicator.setStyleSheet(""" background-color: grey; border: 1px solid black;""")
         if value == 1:
             self.ui.gate_sensor_2_indicator.setStyleSheet(""" background-color: green; border: 1px solid black;""")

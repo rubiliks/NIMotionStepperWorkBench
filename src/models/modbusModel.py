@@ -23,7 +23,7 @@ class ModbusModel(QObject):
         self.timer2 = QTimer()
         self.timer2.timeout.connect(lambda:self.readImputRegister(1,24))
 
-    # Соединение модбас
+    # Modbus connection
     def connectModbus (self):
         if self._modbus_device.state() != QModbusDevice.State.ConnectedState:
             self._modbus_device.setConnectionParameter(QModbusDevice.SerialPortNameParameter, "COM3")
@@ -51,7 +51,7 @@ class ModbusModel(QObject):
             self.timer.stop()
             self.timer2.stop()
 
-    # Запись регистров
+    # Write holding register
     def writeHolgingRegisterMotor(self, address, register, value):
         write_unit = QModbusDataUnit(QModbusDataUnit.HoldingRegisters, register, 1)
         write_unit.setValue(0, value)
@@ -76,7 +76,7 @@ class ModbusModel(QObject):
             print(f"Ошибка при записи: (код: {error})")
         reply.deleteLater()
 
-    # Чтение регистров
+    # Read input register
     def readImputRegister (self, address, register):
         request = QModbusDataUnit(QModbusDataUnit.InputRegisters, register, 1)
         reply = self._modbus_device.sendReadRequest(request, address)
@@ -112,7 +112,7 @@ class ModbusModel(QObject):
         reply.deleteLater()
 
 
-    # Управление двигателем
+    # Motor control
 
     def enableMotor(self):
         print("enableMotor")
@@ -141,6 +141,7 @@ class ModbusModel(QObject):
         print("speedMotor")
         self.writeHolgingRegisterMotor(1, 86, speedIn)
 
+    #read Input readImputRegister
     def print_bits_lsb(self,value, bits=2):
         print(f"Число: {value}")
         for i in range(bits):
