@@ -3,7 +3,7 @@
 https://www.youtube.com/shorts/br0wnQkW1-4?feature=share
 
 conda list:
-# Name                    Version                   Build  Channel
+Name                    Version                   Build  Channel
 bzip2                     1.0.8                h2bbff1b_6
 ca-certificates           2026.3.19            haa95532_0
 libexpat                  2.7.5                hd7fb8db_0
